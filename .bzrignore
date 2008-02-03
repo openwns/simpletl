@@ -2,3 +2,10 @@
 .arch-ids
 config/private.py
 config/pushMailRecipients.py
+.objs
+.sconsign.dblite
+addOn
+build
+doxydoc
+include
+config/bversion.hpp
