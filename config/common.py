@@ -6,6 +6,7 @@ import wnsbase.RCS as RCS
 commonEnv = CNBSEnvironment(PROJNAME       = 'simpletl',
                             PROJMODULES    = ['simpletl'],
                             AUTODEPS       = [],
+                            FLATINCLUDES   = False,
                             DEFAULTVERSION = True,
                             LIBRARY        = True,
                             SHORTCUTS      = True,
