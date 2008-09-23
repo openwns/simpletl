@@ -56,19 +56,19 @@ namespace simpletl {
         * transmission. The passed object must call the setFree() method
         * in its operator() method when it has finished. 
         */
-        template <typename T>
-        static void send(T t, wns::simulator::Time delay)
+        static void 
+        send(wns::events::scheduler::Callable c, wns::simulator::Time delay)
         {
             if (busy)
             {
                 // Medium is busy. Queue the event
-                eventqueue.push(std::make_pair(t, delay));
+                eventqueue.push(std::make_pair(c, delay));
             }
             else
             {
                 // Medium was free. Now it is busy. Send the event.
                 busy = true;
-                wns::simulator::getEventScheduler()->scheduleDelay(t, delay);
+                wns::simulator::getEventScheduler()->scheduleDelay(c, delay);
             }
         }
         

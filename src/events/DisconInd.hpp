@@ -28,6 +28,9 @@
 #ifndef SIMPELTL_DISCONIND_HPP
 #define SIMPLETL_DISCONIND_HPP
 
+#include <WNS/SmartPtr.hpp>
+#include <WNS/RefCountable.hpp>
+
 namespace simpletl
 {
 	class Connection;
@@ -36,7 +39,8 @@ namespace simpletl
     * @brief Used by TCP to schedule the event of connection
     * release. 
     */
-	class DisconInd
+	class DisconInd :
+        public wns::RefCountable
 	{
 	public:
 		DisconInd(Connection*);
@@ -52,6 +56,7 @@ namespace simpletl
 	private:
 		Connection* sender;
 	};
+    typedef wns::SmartPtr<DisconInd> DisconIndPtr;
 }
 
 #endif // SIMPLETL_DISCONIND_HPP

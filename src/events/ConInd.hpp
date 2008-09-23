@@ -29,6 +29,8 @@
 #define SIMPLETL_CONIND_HPP
 
 #include <SIMPLETL/service/Connection.hpp>
+#include <WNS/SmartPtr.hpp>
+#include <WNS/RefCountable.hpp>
 
 namespace simpletl
 {
@@ -36,7 +38,8 @@ namespace simpletl
     * @brief Used by TCP to schedule the event of connection
     * establishment. 
     */
-	class ConInd
+	class ConInd :
+        public wns::RefCountable
 	{
 	public:
 		ConInd(Connection*);
@@ -52,6 +55,7 @@ namespace simpletl
 	private:
 		Connection* sender;
 	};
+    typedef wns::SmartPtr<ConInd> ConIndPtr;
 }
 
 #endif // SIMPLETL_CONIND_HPP

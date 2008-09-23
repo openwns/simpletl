@@ -29,6 +29,8 @@
 #define SIMPLETL_DATAIND_HPP
 
 #include <SIMPLETL/PDU.hpp>
+#include <WNS/SmartPtr.hpp>
+#include <WNS/RefCountable.hpp>
 
 namespace simpletl
 {
@@ -38,7 +40,8 @@ namespace simpletl
     * @brief Used to schedule the transmission
     * end of a PDU on the medium.
     */
-	class DataInd
+	class DataInd :
+        public wns::RefCountable
 	{
 	public:
 		DataInd(Connection*, const simpletl::PDUPtr&);
@@ -55,6 +58,7 @@ namespace simpletl
 		Connection* receiver;
 		simpletl::PDUPtr pdu;
 	};
+    typedef wns::SmartPtr<DataInd> DataIndPtr;
 }
 
 #endif // SIMPLETL_DATAIND_HPP
