@@ -1,4 +1,4 @@
-libname = 'simpleTL'
+libname = 'simpletl'
 srcFiles = []
 hppFiles = []
 pyconfigs = []
