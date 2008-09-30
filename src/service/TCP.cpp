@@ -36,8 +36,6 @@
 #include <WNS/module/Module.hpp>
 #include <WNS/logger/Master.hpp>
 
-#include <boost/bind.hpp>
-
 using namespace simpletl;
 
 TCP::TCP(const wns::pyconfig::View& _pyco)
@@ -84,12 +82,7 @@ void TCP::openConnection(int _port,
 
 	simTimeType delay = (double)headerLength / (1000*channelcapacity);
 
-    ConIndPtr ev = ConIndPtr(new ConInd(local));
-    
-    wns::events::scheduler::Callable c =
-        boost::bind(&ConInd::operator(), *ev);
-
-	Medium::send(c, delay);
+	Medium::send(ConInd(local), delay);
 }
 
 void TCP::closeConnection(wns::service::tl::Connection* _connection)
@@ -102,13 +95,7 @@ void TCP::closeConnection(wns::service::tl::Connection* _connection)
 	simTimeType delay = (double)headerLength / (1000*channelcapacity);
 
 	assure(local->getPeer(), "Peer entity not available!");
-    
-    DisconIndPtr ev = DisconIndPtr(new DisconInd(local));
-    
-    wns::events::scheduler::Callable c =
-        boost::bind(&DisconInd::operator(), *ev);
-
-    Medium::send(c, delay);
+	Medium::send(DisconInd(local), delay);
 }
 
 void TCP::listenOnPort(int _port, wns::service::tl::ConnectionHandler* _ch)

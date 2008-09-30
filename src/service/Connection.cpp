@@ -37,8 +37,6 @@
 #include <WNS/service/tl/DataHandler.hpp>
 #include <WNS/Assure.hpp>
 
-#include <boost/bind.hpp>
-
 
 using namespace simpletl;
 
@@ -80,12 +78,7 @@ void Connection::sendData(const wns::osi::PDUPtr& _pdu)
 
 	simTimeType delay = (double)(headerSize+payloadSize) / (1000*channelcapacity);
 
-    DataIndPtr ev = DataIndPtr(new DataInd(getPeer(), pdu));
-    
-    wns::events::scheduler::Callable c =
-        boost::bind(&DataInd::operator(), *ev);
-
-	Medium::send(c, delay);
+	Medium::send(DataInd(getPeer(), pdu), delay);
 }
 
 void Connection::receiveData(const simpletl::PDUPtr& _pdu)

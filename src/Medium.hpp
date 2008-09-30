@@ -56,8 +56,7 @@ namespace simpletl {
         * transmission. The passed object must call the setFree() method
         * in its operator() method when it has finished. 
         */
-        static void 
-        send(wns::events::scheduler::Callable c, wns::simulator::Time delay)
+        static void send(wns::events::scheduler::Callable c, wns::simulator::Time delay)
         {
             if (busy)
             {
