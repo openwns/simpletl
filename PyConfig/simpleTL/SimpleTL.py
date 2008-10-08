@@ -30,5 +30,5 @@ from Channel import Channel
 
 class SimpleTL(Module):
     def __init__(self):
-        super(SimpleTL, self).__init__("simpleTL", "simpletl-1.0")
+        super(SimpleTL, self).__init__("simpleTL", "simpletl")
         self.channel = Channel()
