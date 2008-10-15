@@ -25,7 +25,7 @@
 #
 ###############################################################################
 
-from wns.Module import Module
+from openwns.module import Module
 from Channel import Channel
 
 class SimpleTL(Module):
