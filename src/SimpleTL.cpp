@@ -26,16 +26,14 @@
  ******************************************************************************/
 
 #include <SIMPLETL/SimpleTL.hpp>
-#include <SIMPLETL/bversion.hpp>
 
 using namespace simpletl;
 
 STATIC_FACTORY_REGISTER_WITH_CREATOR(SimpleTL, wns::module::Base, "simpleTL", wns::PyConfigViewCreator);
 
-SimpleTL::SimpleTL(const wns::pyconfig::View& _pyConfigView)
-	: wns::module::Module<SimpleTL>(_pyConfigView)
+SimpleTL::SimpleTL(const wns::pyconfig::View& _pyConfigView):
+    wns::module::Module<SimpleTL>(_pyConfigView)
 {
-	version = wns::module::VersionInformation(BUILDVINFO);
 }
 
 void SimpleTL::configure()
@@ -46,14 +44,3 @@ void SimpleTL::startUp()
 
 void SimpleTL::shutDown()
 {}
-
-/*
-  Local Variables:
-  mode: c++
-  fill-column: 80
-  c-basic-offset: 4
-  c-tab-always-indent: t
-  indent-tabs-mode: t
-  tab-width: 4
-  End:
-*/
