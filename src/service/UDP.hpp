@@ -31,6 +31,7 @@
 #include <WNS/service/tl/Service.hpp>
 #include <WNS/service/nl/Address.hpp>
 #include <WNS/service/tl/PortPool.hpp>
+#include <WNS/service/qos/QoSClasses.hpp>
 #include <WNS/logger/Logger.hpp>
 
 
@@ -50,9 +51,10 @@ namespace simpletl {
         * @see Connection
         */
 		virtual void openConnection(int _port,
-									wns::service::nl::FQDN _source,
-									wns::service::nl::FQDN _peerInstance,
-									wns::service::tl::ConnectionHandler* _ch);
+					    wns::service::nl::FQDN _source,
+					    wns::service::nl::FQDN _peerInstance,
+					    wns::service::qos::QoSClass _qosClass,
+					    wns::service::tl::ConnectionHandler* _ch);
 
         /**
         * @brief Called by higher layer to instantly release a connection to a peer

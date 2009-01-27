@@ -31,6 +31,7 @@
 #include <WNS/service/tl/Service.hpp>
 #include <WNS/service/nl/Address.hpp>
 #include <WNS/service/tl/PortPool.hpp>
+#include <WNS/service/qos/QoSClasses.hpp>
 #include <WNS/logger/Logger.hpp>
 
 
@@ -48,8 +49,7 @@ namespace simpletl {
 		virtual ~TCP();
 
         /**
-        * @brief Called by higher layer to establish a connection to a peer
-        * node. 
+        * @brief Called by higher layer to establish a connection to a peer node.
         * An ConInd event is scheduled which will inform the local and peer
         * connection handler when the connection is established. Establishment
         * takes the duration of transmitting 320 bit. If the Medium is busy
@@ -58,16 +58,16 @@ namespace simpletl {
         * @see Medium
         */
 		virtual void openConnection(int _port,
-									wns::service::nl::FQDN _source,
-									wns::service::nl::FQDN _peerInstance,
-									wns::service::tl::ConnectionHandler* _ch);
+					    wns::service::nl::FQDN _source,
+					    wns::service::nl::FQDN _peerInstance,
+					    wns::service::qos::QoSClass _qosClass,
+					    wns::service::tl::ConnectionHandler* _ch);
 
         /**
-        * @brief Called by higher layer to release a connection to a peer
-        * node. 
+        * @brief Called by higher layer to release a connection to a peer node.
         * An DisconInd event is scheduled which will inform the local and peer
         * connection handler when the connection is released. Releasing
-        * takes the duration of transmitting 320 bit. 
+        * takes the duration of transmitting 320 bit.
         * @see Connection
         */
 		virtual void closeConnection(wns::service::tl::Connection* _connection);
@@ -103,7 +103,7 @@ namespace simpletl {
 		bool registered;
 
         /**
-        * @brief The pool of ports used to draw a port for a new outgoing connection 
+        * @brief The pool of ports used to draw a port for a new outgoing connection
         **/
 		wns::service::tl::PortPool* portPool;
 

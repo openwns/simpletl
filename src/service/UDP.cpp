@@ -30,6 +30,7 @@
 #include <SIMPLETL/Routing.hpp>
 #include <SIMPLETL/SimpleTL.hpp>
 #include <WNS/service/tl/FlowID.hpp>
+#include <WNS/service/qos/QoSClasses.hpp>
 #include <WNS/module/Module.hpp>
 #include <WNS/logger/Master.hpp>
 
@@ -51,9 +52,10 @@ UDP::~UDP()
 }
 
 void UDP::openConnection(int _port,
-						 wns::service::nl::FQDN _source,
-						 wns::service::nl::FQDN _peerInstance,
-						 wns::service::tl::ConnectionHandler* _ch)
+			 wns::service::nl::FQDN _source,
+			 wns::service::nl::FQDN _peerInstance,
+			 wns::service::qos::QoSClass /*_qosClass*/,
+			 wns::service::tl::ConnectionHandler* _ch)
 {
 	wns::service::tl::ConnectionHandler* peerconnectionhandler =
 		Routing::getService(_peerInstance, _port);
