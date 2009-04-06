@@ -57,7 +57,7 @@ namespace simpletl {
         * @see Connection
         * @see Medium
         */
-		virtual void openConnection(int _port,
+		virtual void openConnection(wns::service::tl::Port _port,
 									wns::service::nl::FQDN _source,
 									wns::service::nl::FQDN _peerInstance,
 									wns::service::tl::ConnectionHandler* _ch);
@@ -78,7 +78,7 @@ namespace simpletl {
         * for the local IP address and the provided port. On first call the node
         * IP address is #registered at the Routing instance.
         */
-		virtual void listenOnPort(int _port,
+		virtual void listenOnPort(wns::service::tl::Port _port,
 								  wns::service::tl::ConnectionHandler* _ch);
 	private:
         /**

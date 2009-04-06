@@ -57,7 +57,7 @@ TCP::~TCP()
 	delete portPool;
 }
 
-void TCP::openConnection(int _port,
+void TCP::openConnection(wns::service::tl::Port _port,
 						 wns::service::nl::FQDN _source,
 						 wns::service::nl::FQDN _peerInstance,
 						 wns::service::tl::ConnectionHandler* _ch)
@@ -98,7 +98,7 @@ void TCP::closeConnection(wns::service::tl::Connection* _connection)
 	Medium::send(DisconInd(local), delay);
 }
 
-void TCP::listenOnPort(int _port, wns::service::tl::ConnectionHandler* _ch)
+void TCP::listenOnPort(wns::service::tl::Port _port, wns::service::tl::ConnectionHandler* _ch)
 {
 	wns::service::nl::FQDN domainName =
 		wns::service::nl::FQDN(pyco.get<std::string>("domainName"));

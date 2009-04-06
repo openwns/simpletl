@@ -30,10 +30,11 @@
 
 #include <WNS/node/component/Component.hpp>
 #include <WNS/logger/Logger.hpp>
+#include <SIMPLETL/service/UDP.hpp>
+#include <SIMPLETL/service/TCP.hpp>
+
 
 namespace simpletl {
-	class TCP;
-	class UDP;
 
     /**
     * @brief The SimpleTL component registers two implementation of the
