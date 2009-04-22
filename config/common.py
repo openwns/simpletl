@@ -10,7 +10,7 @@ commonEnv = CNBSEnvironment(PROJNAME       = 'simpletl',
                             DEFAULTVERSION = True,
                             LIBRARY        = True,
                             SHORTCUTS      = True,
-			    REVISIONCONTROL = RCS.Bazaar('../', 'SimpleTL', 'main', '1.0'),
+                            REVISIONCONTROL = RCS.Bazaar('../', 'SimpleTL', 'main', '1.0'),
                             )
 
 Return('commonEnv')
